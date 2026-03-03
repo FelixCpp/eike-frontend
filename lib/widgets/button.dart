@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 
 enum ButtonVariant { secondary, outline, alert }
@@ -32,8 +33,6 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     // Determine base colors via variant switch
     final (
       Color baseBg,
@@ -42,22 +41,22 @@ class Button extends StatelessWidget {
       Color baseBorder,
     ) = switch (variant) {
       ButtonVariant.secondary => (
-        theme.colorScheme.secondaryContainer,
-        theme.colorScheme.onSecondaryContainer,
-        theme.colorScheme.onSecondaryContainer,
-        theme.colorScheme.secondaryContainer,
+        context.colors.secondaryContainer,
+        context.colors.onSecondaryContainer,
+        context.colors.onSecondaryContainer,
+        context.colors.secondaryContainer,
       ),
       ButtonVariant.outline => (
         Colors.transparent,
-        theme.colorScheme.onSecondaryContainer,
-        theme.colorScheme.onSurfaceVariant,
-        theme.colorScheme.outlineVariant,
+        context.colors.onSecondaryContainer,
+        context.colors.onSurfaceVariant,
+        context.colors.outlineVariant,
       ),
       ButtonVariant.alert => (
-        theme.colorScheme.errorContainer,
-        theme.colorScheme.error,
-        theme.colorScheme.onErrorContainer,
-        theme.colorScheme.errorContainer,
+        context.colors.errorContainer,
+        context.colors.error,
+        context.colors.onErrorContainer,
+        context.colors.errorContainer,
       ),
     };
 
@@ -71,7 +70,7 @@ class Button extends StatelessWidget {
 
     final bool isDisabled = disabled || onPressed == null;
 
-    final TextStyle? labelStyle = (textStyle ?? theme.textTheme.bodyMedium)
+    final TextStyle? labelStyle = (textStyle ?? context.textTheme.bodyMedium)
         ?.copyWith(
           fontWeight: textStyle?.fontWeight ?? FontWeight.w700,
           color: isDisabled ? fg.withValues(alpha: 0.6) : fg,

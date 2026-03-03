@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'app_lock_storage.dart';
@@ -210,8 +211,6 @@ class _AppLockGateState extends State<AppLockGate> with WidgetsBindingObserver {
     if (_loading) return widget.child;
     if (!_enabled || _unlocked) return widget.child;
 
-    final theme = Theme.of(context);
-
     final showCooldownHint =
         !_allowAutoPrompt &&
         (_inCooldown || _softFails >= _maxSoftFailsBeforeNoAutoPrompt);
@@ -226,7 +225,7 @@ class _AppLockGateState extends State<AppLockGate> with WidgetsBindingObserver {
         widget.child,
         Positioned.fill(
           child: ColoredBox(
-            color: theme.colorScheme.surface,
+            color: context.colors.surface,
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 320),
@@ -236,18 +235,18 @@ class _AppLockGateState extends State<AppLockGate> with WidgetsBindingObserver {
                     Icon(
                       Icons.lock,
                       size: 44,
-                      color: theme.colorScheme.primary,
+                      color: context.colors.primary,
                     ),
                     const SizedBox(height: 12),
-                    Text('App gesperrt', style: theme.textTheme.titleLarge),
+                    Text('App gesperrt', style: context.textTheme.titleLarge),
                     const SizedBox(height: 8),
 
                     if (_error != null) ...[
                       Text(
                         _error!,
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.error,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.error,
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -259,7 +258,7 @@ class _AppLockGateState extends State<AppLockGate> with WidgetsBindingObserver {
                             ? 'Automatische Abfrage pausiert. Bitte tippe auf „Entsperren“ (in $cooldownSecondsLeft s erneut automatisch).'
                             : 'Automatische Abfrage pausiert. Bitte tippe auf „Entsperren“.',
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.bodyMedium,
+                        style: context.textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 12),
                     ],
@@ -300,4 +299,7 @@ class _AppLockGateState extends State<AppLockGate> with WidgetsBindingObserver {
   }
 }
 
-enum _UnlockTrigger { auto, manual }
+enum _UnlockTrigger {
+  auto,
+  manual,
+}

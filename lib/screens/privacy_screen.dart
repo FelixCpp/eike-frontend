@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_header.dart';
@@ -16,7 +17,7 @@ class PrivacyScreen extends StatelessWidget {
           children: [
             Text(
               'Gemäß Art. 13 DSGVO',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
             ),
             const SizedBox(height: 16),
             const Text(

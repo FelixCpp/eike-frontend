@@ -1,4 +1,5 @@
 import 'package:eike_frontend/theme/eike_theme.dart';
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -137,15 +138,15 @@ class ScaffoldWithNavBar extends StatelessWidget {
           highlightColor: Colors.transparent,
         ),
         child: */ BottomNavigationBar(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+        backgroundColor: context.colors.surfaceContainer,
         currentIndex: navigationShell.currentIndex,
         onTap: (index) => navigationShell.goBranch(
           index,
           initialLocation: index == navigationShell.currentIndex,
         ),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
-        unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
+        selectedItemColor: context.colors.primary,
+        unselectedItemColor: context.colors.onSurfaceVariant,
         selectedFontSize: 12,
         unselectedFontSize: 12,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
@@ -154,19 +155,19 @@ class ScaffoldWithNavBar extends StatelessWidget {
           BottomNavigationBarItem(
             icon: const _NavIcon(icon: Icons.favorite_outline),
             activeIcon: _ActiveNavIcon(icon: Icons.favorite_outline),
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: context.colors.primary,
             label: 'Meine 7 Sachen',
           ),
           BottomNavigationBarItem(
             icon: const _NavIcon(icon: Icons.phone),
             activeIcon: _ActiveNavIcon(icon: Icons.phone),
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: context.colors.primary,
             label: 'Kontakt',
           ),
           BottomNavigationBarItem(
             icon: const _NavIcon(icon: Icons.settings),
             activeIcon: _ActiveNavIcon(icon: Icons.settings),
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: context.colors.primary,
             label: 'Einstellungen',
           ),
         ],
@@ -183,7 +184,6 @@ class _ActiveNavIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       height: 36,
       child: Center(
@@ -191,9 +191,9 @@ class _ActiveNavIcon extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: colorScheme.primary.withValues(alpha: 0.14),
+            color: context.colors.primary.withValues(alpha: 0.14),
           ),
-          child: Icon(icon, color: colorScheme.primary),
+          child: Icon(icon, color: context.colors.primary),
         ),
       ),
     );

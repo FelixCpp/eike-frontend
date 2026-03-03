@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget implements PreferredSizeWidget {
@@ -10,21 +11,20 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AppBar(
       centerTitle: true,
-      backgroundColor: theme.colorScheme.surface,
+      backgroundColor: context.colors.surface,
       scrolledUnderElevation: 0,
       elevation: 0,
       title: Text(
         title,
-        style: theme.textTheme.titleMedium?.copyWith(
+        style: context.textTheme.titleMedium?.copyWith(
           fontWeight: FontWeight.w700,
         ),
       ),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
-        child: Divider(height: 1, color: theme.colorScheme.outlineVariant),
+        child: Divider(height: 1, color: context.colors.outlineVariant),
       ),
     );
   }

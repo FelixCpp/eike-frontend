@@ -1,4 +1,5 @@
 import 'package:eike_frontend/theme/theme.dart';
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 
 abstract final class EikeTheme {
@@ -29,7 +30,7 @@ abstract final class EikeTheme {
     String bodyFontString,
     String displayFontString,
   ) {
-    final base = Theme.of(context).textTheme;
+    final base = context.textTheme;
     return base.apply(
       fontFamily: bodyFontString,
       displayColor: base.bodyLarge?.color,

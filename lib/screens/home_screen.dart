@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
@@ -39,8 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       appBar: const AppHeader(title: 'Meine 7 Sachen'),
       body: GestureDetector(
@@ -60,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
                       'Die Inhalte konnten nicht geladen werden. Bitte versuche es später erneut.',
-                      style: theme.textTheme.bodyMedium,
+                      style: context.textTheme.bodyMedium,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -72,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Center(
                   child: Text(
                     'Keine Inhalte gefunden.',
-                    style: theme.textTheme.bodyMedium,
+                    style: context.textTheme.bodyMedium,
                   ),
                 );
               }
@@ -158,14 +157,11 @@ class _TipCardState extends State<_TipCard> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-
     return Container(
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
+        color: context.colors.surfaceContainerLow,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.colorScheme.outlineVariant),
+        border: Border.all(color: context.colors.outlineVariant),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -187,7 +183,7 @@ class _TipCardState extends State<_TipCard> {
                 Expanded(
                   child: Text(
                     widget.tip.title,
-                    style: textTheme.titleMedium?.copyWith(
+                    style: context.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -217,12 +213,11 @@ class _TipCardState extends State<_TipCard> {
                             alignment: Alignment.center,
                             errorBuilder: (context, error, stackTrace) =>
                                 Container(
-                                  color:
-                                      theme.colorScheme.surfaceContainerHighest,
+                                  color: context.colors.surfaceContainerHighest,
                                   alignment: Alignment.center,
                                   child: Icon(
                                     Icons.image_not_supported_outlined,
-                                    color: theme.colorScheme.onSurfaceVariant,
+                                    color: context.colors.onSurfaceVariant,
                                     size: 32,
                                   ),
                                 ),
@@ -238,15 +233,15 @@ class _TipCardState extends State<_TipCard> {
             const SizedBox(height: 16),
             Text(
               widget.tip.description,
-              style: textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.colors.onSurfaceVariant,
                 height: 1.35,
               ),
             ),
             const SizedBox(height: 16),
             Text(
               'Das mache ich:',
-              style: textTheme.titleSmall?.copyWith(
+              style: context.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -266,18 +261,18 @@ class _TipCardState extends State<_TipCard> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: theme.colorScheme.outlineVariant,
+                    color: context.colors.outlineVariant,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: theme.colorScheme.outlineVariant,
+                    color: context.colors.outlineVariant,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: theme.colorScheme.primary),
+                  borderSide: BorderSide(color: context.colors.primary),
                 ),
               ),
             ),
@@ -295,19 +290,18 @@ class _NumberBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       height: 36,
       width: 36,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: theme.colorScheme.primary.withValues(alpha: 0.1),
+        color: context.colors.primary.withValues(alpha: 0.1),
       ),
       alignment: Alignment.center,
       child: Text(
         position.toString(),
-        style: theme.textTheme.titleMedium?.copyWith(
-          color: theme.colorScheme.primary,
+        style: context.textTheme.titleMedium?.copyWith(
+          color: context.colors.primary,
           fontWeight: FontWeight.w700,
         ),
       ),

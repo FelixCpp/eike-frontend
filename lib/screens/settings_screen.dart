@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -182,8 +183,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     // Ladeanzeige, bis Daten geladen sind
     if (_loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
@@ -231,7 +230,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           label: 'Speichern',
                           variant: ButtonVariant.secondary,
                           onPressed: () => _persistContacts(),
-                          textStyle: theme.textTheme.labelLarge?.copyWith(
+                          textStyle: context.textTheme.labelLarge?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -249,7 +248,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         children: [
                           Icon(
                             Icons.lock_outline_rounded,
-                            color: theme.colorScheme.onSurfaceVariant,
+                            color: context.colors.onSurfaceVariant,
                           ),
                           const SizedBox(width: 16),
                           Expanded(
@@ -258,15 +257,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               children: [
                                 Text(
                                   'App-Sperre',
-                                  style: theme.textTheme.bodyLarge?.copyWith(
-                                    color: theme.colorScheme.onSurfaceVariant,
+                                  style: context.textTheme.bodyLarge?.copyWith(
+                                    color: context.colors.onSurfaceVariant,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Geräteeigene Authentifizierung',
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color: theme.colorScheme.outline,
+                                  style: context.textTheme.bodyMedium?.copyWith(
+                                    color: context.colors.outline,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -284,8 +283,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       const SizedBox(height: 16),
                       Text(
                         'Alle Daten werden lokal auf deinem Gerät gespeichert und verlassen das Smartphone nicht.',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
@@ -299,8 +298,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       Text(
                         'Lösche alle gespeicherten Vorsätze und Einstellungen unwiederuflich.',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
@@ -312,7 +311,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           label: 'Alle Daten löschen',
                           variant: ButtonVariant.alert,
                           onPressed: () => _resetData(),
-                          textStyle: theme.textTheme.labelLarge?.copyWith(
+                          textStyle: context.textTheme.labelLarge?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -327,8 +326,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       Text(
                         'Informationen zum Umgang mit deinen Daten.',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
@@ -351,8 +350,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       const SizedBox(height: 20),
                       Text(
                         'Open-Source-Bibliotheken, die diese App ermöglichen.',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
@@ -373,8 +372,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       const SizedBox(height: 20),
                       Text(
                         'Angaben zum Anbieter und Kontaktmöglichkeiten.',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: context.colors.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
@@ -413,14 +412,13 @@ class _CardContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
+        color: context.colors.surfaceContainerLow,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: theme.colorScheme.outlineVariant),
+        border: Border.all(color: context.colors.outlineVariant),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -449,7 +447,6 @@ class _LabeledField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return TextField(
       controller: controller,
       keyboardType: keyboardType,
@@ -457,8 +454,8 @@ class _LabeledField extends StatelessWidget {
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: hint,
-        hintStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: theme.colorScheme.outline,
+        hintStyle: context.textTheme.bodyMedium?.copyWith(
+          color: context.colors.outline,
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
@@ -466,15 +463,15 @@ class _LabeledField extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
+          borderSide: BorderSide(color: context.colors.outlineVariant),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
+          borderSide: BorderSide(color: context.colors.outlineVariant),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: theme.colorScheme.primary),
+          borderSide: BorderSide(color: context.colors.primary),
         ),
       ),
     );

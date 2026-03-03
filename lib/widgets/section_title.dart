@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/theme_extensions.dart.dart';
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -8,14 +9,13 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.only(top: topPadding, bottom: 18, left: 16),
       child: Text(
         text,
-        style: theme.textTheme.bodyMedium?.copyWith(
+        style: context.textTheme.bodyMedium?.copyWith(
           fontWeight: FontWeight.w700,
-          color: theme.colorScheme.onSurface,
+          color: context.colors.onSurface,
         ),
       ),
     );
