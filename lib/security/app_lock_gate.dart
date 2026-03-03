@@ -1,4 +1,4 @@
-import 'package:eike_frontend/theme/theme_extensions.dart.dart';
+import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'app_lock_storage.dart';

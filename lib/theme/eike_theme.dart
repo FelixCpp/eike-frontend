@@ -1,5 +1,5 @@
 import 'package:eike_frontend/theme/theme.dart';
-import 'package:eike_frontend/theme/theme_extensions.dart.dart';
+import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
 abstract final class EikeTheme {
@@ -41,6 +41,6 @@ abstract final class EikeTheme {
 
 extension on ThemeData {
   ThemeData applyDefaults() {
-    return this;
+    return copyWith();
   }
 }

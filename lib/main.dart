@@ -1,5 +1,5 @@
 import 'package:eike_frontend/theme/eike_theme.dart';
-import 'package:eike_frontend/theme/theme_extensions.dart.dart';
+import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
