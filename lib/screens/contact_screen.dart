@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/eike_theme.dart';
 import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,7 @@ class ContactScreen extends StatelessWidget {
       appBar: const AppHeader(title: 'Kontakt'),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+          padding: EikeTheme.pagePadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

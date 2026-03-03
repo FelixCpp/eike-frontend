@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/eike_theme.dart';
 import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class PrivacyScreen extends StatelessWidget {
     return Scaffold(
       appBar: const AppHeader(title: 'Datenschutz'),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EikeTheme.pagePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

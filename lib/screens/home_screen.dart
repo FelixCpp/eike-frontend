@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:eike_frontend/theme/eike_theme.dart';
 import 'package:eike_frontend/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -77,11 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
               }
 
               return ListView.separated(
-                padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+                padding: EikeTheme.pagePadding,
                 itemCount: tips.length,
                 separatorBuilder: (_, __) => const SizedBox(height: 16),
-                itemBuilder: (context, index) =>
-                    _TipCard(tip: tips[index], position: index + 1),
+                itemBuilder: (context, index) => _TipCard(
+                  tip: tips[index],
+                  position: index + 1,
+                ),
               );
             },
           ),

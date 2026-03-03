@@ -1,3 +1,4 @@
+import 'package:eike_frontend/theme/eike_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,7 +23,7 @@ class ImprintScreen extends StatelessWidget {
     return Scaffold(
       appBar: const AppHeader(title: 'Impressum'),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EikeTheme.pagePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
