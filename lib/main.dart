@@ -1,12 +1,10 @@
+import 'package:eike_frontend/theme/eike_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-import 'theme/util.dart';
-import 'theme/theme.dart';
 
 import 'screens/contact_screen.dart';
 import 'screens/home_screen.dart';
@@ -105,13 +103,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = createTextTheme(context, "Inter", "Inter");
-    final MaterialTheme theme = MaterialTheme(textTheme);
-
     return MaterialApp.router(
       title: 'EIKE',
-      theme: theme.light(),
-      darkTheme: theme.dark(),
+      theme: EikeTheme.lightScheme(context),
+      darkTheme: EikeTheme.darkScheme(context),
+      highContrastTheme: EikeTheme.lightHighContrastScheme(context),
+      highContrastDarkTheme: EikeTheme.darkHighContrastScheme(context),
       themeMode: ThemeMode.system,
       routerConfig: _router,
       builder: (context, child) {
